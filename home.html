@@ -1,0 +1,354 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+   <!-- <meta http-equiv="Content-Type" content="application/json; charset=utf-8" />-->
+<title>刘小刘</title>
+  <link href="homePage.css" type="text/css" rel="stylesheet"/>
+  <script src="jquery-3.3.1.min.js"></script>
+  <script src="homePage.js"></script>
+
+    <link  th:href="@{/homePage.css}" rel="stylesheet">
+
+    <script type="text/javascript" th:src="@{/jquery-3.3.1.min.js}"></script>
+    <script type="text/javascript" th:src="@{/homePage.js}"></script>
+    <script type="text/javascript">
+        function shanchu(i){
+            alert(i);
+             window.location='/deletemessage/i';
+        }
+        function pass() {
+            var count = 1;
+            var password=981024;
+            var input = prompt('请输入密码：','');
+
+            if (input == password) {
+                window.location.href="photo.html";
+            } else{
+                input = prompt('密码错误!请重新输入:');
+            }
+
+            return "这里是输入密码可以看到的内容";
+        }
+
+    </script>
+</head>
+<!--顶部-->
+<div class="top">
+  <ul class="top_introduce">
+          <li><a  onclick="location.reload()" >刘小黑的博客</a></li>
+          <li><a href="/findallmessage">首页</a></li>
+          <li class="gameLeft"><a href="http://www.baidu.com">划水专用</a>
+                  <ul class="game">
+                  <li><a href="https://weibo.com//">微博</a></li>
+                  <li><a href="https://map.baidu.com/">地图</a></li>
+                  <li><a href="https://www.csdn.net/">CSDN</a></li>
+                  </ul>
+          
+          </li>
+          <li><a href="http://www.baidu.com">慢生活</a></li>
+          <li id="photo"><a onclick="pass()"  >图片展</a></li>
+      <!--href="photo.html" -->
+          <li><a href="resume.html">关于我</a></li>
+          <li><a href="http://www.baidu.com">时间轴</a></li>
+          <li><a href="http://www.baidu.com">留言</a></li>
+           <li><input type="text" size="15" ><span><img src="/images/seach1.png"/></span></li>
+     </ul>
+  
+   
+</div>
+ <div class="photoShow">
+    <div class="photoShow_hidden">
+   <ul>
+                 <li><img src="/images/dianji2.jpg"/></li>
+                 <li><img src="/images/dianji4.jpg"/></li>
+                 <li><img src="/images/dianji5.jpg"/></li>
+                 <li><img src="/images/dianji2.jpg"/></li>
+                 <li><img src="/images/dianji4.jpg"/></li>
+                 <li><img src="/images/dianji5.jpg"/></li>
+   </ul>
+   </div>
+ </div>
+<!--广告图片展播-->
+<div class="Advertisement">
+    <div class="Advertisement_left"><span><img src="/img/img1.jpg"/></span><!--<p></p>--></div>
+    <div class="Advertisement_right">
+    <div class="Advertisement_right_top"><span><img src="/img/img1.jpg"/></span><p>那天偶然走近你</p></div>
+    <div class="Advertisement_right_buttom"><span><img src="/img/img1.jpg"/></span><p>五月南风正和煦</p></div>
+</div>
+</div>
+<!--弹窗跟对联广告-->
+<!--<div class="popup"><img src="images/tanchuang.png"/><span></span></div>
+<div class="couplet">
+<div class="couplet1" ><img src="images/dianji4.jpg"/></div>
+<div class="couplet2"><img src="images/dianji4.jpg"/></div>
+</div>-->
+
+<!--主体-->
+<div class="main">
+<!--主体左-->
+<div class="main_left">
+<!--输入框-->
+<div class="content">
+
+    <form action="/savenewmessage"    method="post">
+  <P>欢迎：</P><!--<p th:text="${user}" name="us"  > </p> -->
+  <input type="text" name="us" th:value="*{user}" readonly="readonly">
+<P>主题：</P><input type="text" name="zhuti" class="p1"><br />
+<P>标签：</P><input type="text" name="biaoqian" class="p2"><br />
+
+<!--<P>选择图片：</P><input type="file" class="p3" /><br />
+  -->
+<span>主要内容：</span><br />
+<textarea name= "content" class="control"></textarea>
+
+        <button class="submit">发表</button>
+
+    </form>
+</div>
+<!--<div class="massageList">
+    <div>
+      &lt;!&ndash;  &nbsp;&nbsp;&nbsp;主题：    <span style="color: skyblue;" th:text="${zhuti}"></span><br/>
+        &nbsp;&nbsp;&nbsp;标签：   <span style="color: skyblue;" th:text="${biaoqian}"></span><br/>
+        &nbsp;&nbsp;&nbsp;内容：  <span style="color: skyblue;" th:text="${content}"></span><br/>
+        &nbsp;&nbsp;&nbsp;日期： <span style="color: skyblue;" th:text="${ts}"></span><br/>&ndash;&gt;
+        <table  border="1" >
+            <tr>
+                <th>
+                    <td>
+                &nbsp;&nbsp;&nbsp;主题：    <span style="color: skyblue;" th:text="${zhuti}"></span><br/>
+
+            </td>
+
+                </th>
+
+            </tr>
+            <tr>
+                <th>
+                <td>
+                    &nbsp;&nbsp;&nbsp;标签：   <span style="color: skyblue;" th:text="${biaoqian}"></span><br/>
+
+                </td>
+
+                </th>
+
+            </tr>
+            <tr>
+                <th>
+                <td>
+                     &nbsp;&nbsp;&nbsp;内容：  <span style="color: skyblue;" th:text="${content}"></span><br/>
+
+                </td>
+
+                </th>
+
+            </tr>
+            <tr>
+                <th>
+                <td>
+                     &nbsp;&nbsp;&nbsp;日期： <span style="color: skyblue;" th:text="${ts}"></span><br/>
+
+                </td>
+
+                </th>
+
+            </tr>
+        </table>
+        <hr/>
+        <p></p>
+    </div>-->
+<!--第一条微博-->
+<!--<div class="article">
+<h1 th:text="${zhuti}"> </h1>
+
+<div class="article_picture"><img src="/images/2.png"/></div>
+<div class="article_content">
+    <center><p th:text="${biaoqian}"> </p> </center>
+<p th:text="${content}"> </p></div>
+    <p th:text="${ts}"></p></div>-->
+
+    <!--第一条微博-->
+    <div class="article">
+        <h1 th:text="${messagelist.get(0).getZhuti()} "> </h1>
+
+        <div class="article_picture"><img src="/img/contentimg.jpg"/></div>
+
+        <div class="article_content">
+            <center><p th:text="${messagelist.get(0).getBiaoqian()}"> </p> </center>
+            <p th:text="${messagelist.get(0).getContent()}"> </p>
+             </div>
+        <a onclick="shanchu(0)">删除</a>
+        <p th:text="${messagelist.get(0).getTsdate()}"></p>
+
+
+
+    </div>
+
+    <div class="article">
+    <h1 th:text="${messagelist.get(1).getZhuti()} "> </h1>
+
+    <div class="article_picture"><img src="/img/contentimg.jpg"/></div>
+    <div class="article_content">
+        <center><p th:text="${messagelist.get(1).getBiaoqian()}"> </p> </center>
+        <p th:text="${messagelist.get(1).getContent()}"> </p></div>
+    <p th:text="${messagelist.get(1).getTsdate()}"></p></div>
+
+    <!--第2条微博-->
+    <div class="article">
+        <h1 th:text="${messagelist.get(2).getZhuti()} "> </h1>
+
+        <div class="article_picture"><img src="/img/contentimg.jpg"/></div>
+        <div class="article_content">
+            <center><p th:text="${messagelist.get(2).getBiaoqian()}"> </p> </center>
+            <p th:text="${messagelist.get(2).getContent()}"> </p></div>
+        <p th:text="${messagelist.get(2).getTsdate()}"></p></div>
+
+    <div class="article">
+        <h1 th:text="${messagelist.get(3).getZhuti()} "> </h1>
+
+        <div class="article_picture"><img src="/img/contentimg.jpg"/></div>
+        <div class="article_content">
+            <center><p th:text="${messagelist.get(3).getBiaoqian()}"> </p> </center>
+            <p th:text="${messagelist.get(3).getContent()}"> </p></div>
+        <p th:text="${messagelist.get(3).getTsdate()}"></p></div>
+
+    <div class="article">
+        <h1 th:text="${messagelist.get(4).getZhuti()} "> </h1>
+
+        <div class="article_picture"><img src="/img/contentimg.jpg"/></div>
+        <div class="article_content">
+            <center><p th:text="${messagelist.get(4).getBiaoqian()}"> </p> </center>
+            <p th:text="${messagelist.get(4).getContent()}"> </p></div>
+        <p th:text="${messagelist.get(4).getTsdate()}"></p></div>
+
+    <div class="article">
+        <h1 th:text="${messagelist.get(5).getZhuti()} "> </h1>
+
+        <div class="article_picture"><img src="/img/contentimg.jpg"/></div>
+        <div class="article_content">
+            <center><p th:text="${messagelist.get(5).getBiaoqian()}"> </p> </center>
+            <p th:text="${messagelist.get(5).getContent()}"> </p></div>
+        <p th:text="${messagelist.get(5).getTsdate()}"></p></div>
+
+
+</div>
+
+
+<!--主体右-->
+<div class="main_right">
+<!--主体右   上-->
+<div class="main_right_top">
+<h1>hello，山塘</h1>
+        <ul>
+        <li><span>从不考虑明天应该去哪里</span></li>
+        <li><span>因为今天的风正和煦</span></li>
+            <li><span>这是最完美的一天啊</span></li>
+        </ul>
+</div>
+<!--主体右   中1-->
+<div class="main_right_middle">
+        <h1>推荐 </h1>
+                <ul>
+                    <li><span style=" font-size:20px">我的歌单</span></li>
+                </ul>
+        <div class="main_right_middle_nav">
+                <ul>
+                        <li><span><img src="/images/dading.jpg" /></span>
+                     <a style=" width: 250px;height: 77px; float: right; margin-right:5px;
+                        margin-top:40px;
+                        line-height:30px;
+                        font-size: 18px;
+                        color: black "
+                       href="https://y.qq.com/n/ryqq/songDetail/001cgpor2AnOa9?songtype=0&ADTAG=h5_playsong">不是因为寂寞才想你</a>
+
+                        </li>
+
+                        <li><span><img src="/images/music.jpg"/></span>
+                            <a style=" width: 250px;height: 77px; float: right; margin-right:5px;
+                        margin-top:40px;
+                        line-height:30px;
+                        font-size: 18px;
+                        color: black "
+                               href="https://c.y.qq.com/base/fcgi-bin/u?__=TQfxai5">qq音乐收藏</a>
+                        </li>
+                        <li><span><img src="/images/wangyiyun.jpg"/></span>
+                            <a style=" width: 250px;height: 77px; float: right; margin-right:5px;
+                        margin-top:40px;
+                        line-height:30px;
+                        font-size: 18px;
+                        color: black "
+                               href="http://music.163.com/playlist/4935599376/1302557657/?userid=1302557657 ">网易云音乐收藏</a>
+
+                        </li>
+
+                </ul>
+        
+        
+        </div>
+        
+
+  
+</div>
+
+<div class="main_right_middle">
+        <h1>Something</h1>
+                <ul>
+                    <li><span>miss</span></li>
+                </ul>
+        <div class="main_right_middle_nav">
+                <ul>
+                        <li><span><img src="/images/a1.jpg"/></span>
+                      <a style=" width: 250px;height: 77px; float: right; margin-right:5px;
+                        margin-top:40px;
+                        line-height:30px;
+                        font-size: 18px;
+                        color: black " >百事可乐</a>
+
+                        </li>
+                        <li><span><img src="/images/a1.jpg"/></span><a style=" width: 250px;height: 77px; float: right; margin-right:5px;
+                        margin-top:40px;
+                        line-height:30px;
+                        font-size: 18px;
+                        color: black " >百事可乐</a>
+                         </li>
+                        <li><span><img src="/images/a1.jpg"/></span><a style=" width: 250px;height: 77px; float: right; margin-right:5px;
+                        margin-top:40px;
+                        line-height:30px;
+                        font-size: 18px;
+                        color: black " >百事可乐</a>
+                        </li>
+                        <li><span><img src="/images/a1.jpg"/></span><a style=" width: 250px;height: 77px; float: right; margin-right:5px;
+                        margin-top:40px;
+                        line-height:30px;
+                        font-size: 18px;
+                        color: black " >百事可乐</a>
+                        </li>
+                </ul>
+        
+        
+        </div>
+        
+
+  
+</div>
+<!--<div class="main_right_bottom">
+<h1>关注我、捐捐款</h1>
+<ul>
+<li><span><img src="images/qq.png"/></span>&nbsp;&nbsp;&nbsp;2285227135</li>
+<li><span><img src="images/zhifubao.png"/></span>&nbsp;&nbsp;&nbsp;22852227135@qq.com</li>
+<li><span><img src="images/weixin.png"/></span>&nbsp;&nbsp;&nbsp;bin-s6</li>
+</ul>
+<img src="images/shoukuanma.png"/>
+</div>-->
+</div>
+</div>
+<div class="clear"></div>
+<!--底部-->
+<div class="footer"><p>Develop by liuxiaohei</p></br>
+</div>
+
+<p class="footer"  >备案号：<a href="https://beian.miit.gov.cn/#/Integrated/index" rel="nofollow" target="_blank"  >豫ICP备2024068031号</a></p>
+
+<body>
+</body>
+</html>

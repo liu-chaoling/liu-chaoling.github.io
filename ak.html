@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Insert title here</title>
+    <style type="text/css">
+        div>div{
+            width: 150px;
+            height: 10px;
+            margin: 15px;
+        }
+    </style>
+    <script type="text/javascript">
+        function myfn(){
+            var d = document.getElementById("d1");
+            var input = document.getElementById("i1");
+            for(var i=0;i<10;i++){
+                d.innerHTML+=" <div class=\"article\">\n" +
+                    "        <h1 th:text=\"${messagelist.get(0).getZhuti()} \"> </h1>\n" +
+                    "\n" +
+                    "        <div class=\"article_picture\"><img src=\"/img/contentimg.jpg\"/></div>\n" +
+                    "        <div class=\"article_content\">\n" +
+                    "            <center><p th:text=\"${messagelist.get(0).getBiaoqian()}\"> </p> </center>\n" +
+                    "            <p th:text=\"${messagelist.get(0).getContent()}\"> </p></div>\n" +
+                    "        <p th:text=\"${messagelist.get(0).getTsdate()}\"></p></div>";
+            }
+        }
+    </script>
+</head>
+<body>
+<input type="button" value="查看刚多内容" onclick="myfn()">
+<div id="d1"></div>
+
+</body>
+</html>
